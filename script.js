@@ -1,16 +1,15 @@
-
 // ============================ promo header ============================
 // get promo banner elements
-let promoSwipeBack = document.getElementById('promo-swipe-back');
-let promoSwipeNext = document.getElementById('promo-swipe-next');
-let promoText = document.getElementById('promo-text');
+let promoSwipeBack = document.getElementById("promo-swipe-back");
+let promoSwipeNext = document.getElementById("promo-swipe-next");
+let promoText = document.getElementById("promo-text");
 
 // promo messages
 const promoMessages = [
-    "New Customers 10% off with WELCOME",
-    "Free shipping on orders over $50!",
-    "Buy one, get one free!",
-    "Limited-time offer, don't miss out!"
+  "New Customers 10% off with WELCOME",
+  "Free shipping on orders over $50!",
+  "Buy one, get one free!",
+  "Limited-time offer, don't miss out!",
 ];
 
 // index of promo message
@@ -18,142 +17,147 @@ let currentIndex = 0;
 
 // function to update the promo text
 function updatePromoText() {
-    // Slide out to left
-    promoText.style.transform = 'translateX(-100%)';
-    promoText.style.opacity = '0';
-    promoText.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-    
-    // After slide out, update text and prepare to slide in from right
-    setTimeout(() => {
-        // Remove transition temporarily to instantly move to right side
-        promoText.style.transition = 'none';
-        promoText.textContent = promoMessages[currentIndex];
-        promoText.style.transform = 'translateX(50%)';
-        
-        // Trigger reflow
-        promoText.offsetHeight;
-        
-        // Re-add transition and slide in from right
-        promoText.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-        promoText.style.transform = 'translateX(0)';
-        promoText.style.opacity = '1';
-    }, 500);
+  // Slide out to left
+  promoText.style.transform = "translateX(-100%)";
+  promoText.style.opacity = "0";
+  promoText.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+
+  // After slide out, update text and prepare to slide in from right
+  setTimeout(() => {
+    // Remove transition temporarily to instantly move to right side
+    promoText.style.transition = "none";
+    promoText.textContent = promoMessages[currentIndex];
+    promoText.style.transform = "translateX(50%)";
+
+    // Trigger reflow
+    promoText.offsetHeight;
+
+    // Re-add transition and slide in from right
+    promoText.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+    promoText.style.transform = "translateX(0)";
+    promoText.style.opacity = "1";
+  }, 500);
 }
 
 // back button
-promoSwipeBack.onclick = function(){
-    currentIndex = (currentIndex - 1 + promoMessages.length) % promoMessages.length;
-    updatePromoText();
-}
+promoSwipeBack.onclick = function () {
+  currentIndex =
+    (currentIndex - 1 + promoMessages.length) % promoMessages.length;
+  updatePromoText();
+};
 
 // next button
-promoSwipeNext.onclick = function() {
-    currentIndex = (currentIndex + 1) % promoMessages.length;
-    updatePromoText();
+promoSwipeNext.onclick = function () {
+  currentIndex = (currentIndex + 1) % promoMessages.length;
+  updatePromoText();
 };
 
 //auto swipe next
 function autoSwipeNext() {
-    setInterval(function() {
-        currentIndex = (currentIndex + 1) % promoMessages.length;
-        updatePromoText();
-    }, 4000);
+  setInterval(function () {
+    currentIndex = (currentIndex + 1) % promoMessages.length;
+    updatePromoText();
+  }, 4000);
 }
 
 autoSwipeNext();
 
 // ====================================== Navbar menu   ======================================================
 
-document.addEventListener('DOMContentLoaded', () => {
-  const menuIcon = document.getElementById('menu-icon');
-  const menuLinks = document.getElementById('menu-links');
-  
-  menuIcon?.addEventListener('click', () => {
-      menuLinks.classList.toggle('active');
+document.addEventListener("DOMContentLoaded", () => {
+  const menuIcon = document.getElementById("menu-icon");
+  const menuLinks = document.getElementById("menu-links");
+
+  menuIcon?.addEventListener("click", () => {
+    menuLinks.classList.toggle("active");
   });
 
   function hideAllDropdowns() {
-      document.querySelectorAll('.mega-dropdown, .collection-dropdown').forEach(dropdown => {
-          dropdown.classList.remove('show');
+    document
+      .querySelectorAll(".mega-dropdown, .collection-dropdown")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("show");
       });
   }
 
-  const navbar = document.querySelector('.navbar');
-  navbar.addEventListener('mouseleave', hideAllDropdowns);
+  const navbar = document.querySelector(".navbar");
+  navbar.addEventListener("mouseleave", hideAllDropdowns);
 
   const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
   const collectionLink = document.querySelector('a[href="#collection"]');
 
-  newArrivalsLink?.parentElement.addEventListener('mouseenter', () => {
-      hideAllDropdowns();
-      document.querySelector('.mega-dropdown').classList.add('show');
+  newArrivalsLink?.parentElement.addEventListener("mouseenter", () => {
+    hideAllDropdowns();
+    document.querySelector(".mega-dropdown").classList.add("show");
   });
 
-  collectionLink?.parentElement.addEventListener('mouseenter', () => {
-      hideAllDropdowns();
-      document.querySelector('.collection-dropdown').classList.add('show');
+  collectionLink?.parentElement.addEventListener("mouseenter", () => {
+    hideAllDropdowns();
+    document.querySelector(".collection-dropdown").classList.add("show");
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const searchIcon = document.querySelector('.icons-container a[href="#"]');
   const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
   const collectionLink = document.querySelector('a[href="#collection"]');
-  
-  const searchCard = document.querySelector('.search-card');
-  
+
+  const searchCard = document.querySelector(".search-card");
+
   function hideSearchCard() {
-    searchCard.classList.add('hidden');
+    searchCard.classList.add("hidden");
   }
 
-  searchIcon.addEventListener('mouseenter', () => {
+  searchIcon.addEventListener("mouseenter", () => {
     // Hide other dropdowns when search card opens
-    document.querySelectorAll('.mega-dropdown, .collection-dropdown').forEach(dropdown => {
-      dropdown.classList.remove('show');
-    });
-    searchCard.classList.remove('hidden');
+    document
+      .querySelectorAll(".mega-dropdown, .collection-dropdown")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("show");
+      });
+    searchCard.classList.remove("hidden");
   });
 
   // Hide search card when other dropdowns open
-  newArrivalsLink?.parentElement.addEventListener('mouseenter', hideSearchCard);
-  collectionLink?.parentElement.addEventListener('mouseenter', hideSearchCard);
+  newArrivalsLink?.parentElement.addEventListener("mouseenter", hideSearchCard);
+  collectionLink?.parentElement.addEventListener("mouseenter", hideSearchCard);
 
   // Hide dropdowns only when leaving entire area
-  document.querySelector('.navbar').addEventListener('mouseleave', () => {
-    searchCard.classList.add('hidden');
+  document.querySelector(".navbar").addEventListener("mouseleave", () => {
+    searchCard.classList.add("hidden");
   });
 
-  document.addEventListener('click', (event) => {
+  document.addEventListener("click", (event) => {
     if (!searchCard.contains(event.target) && event.target !== searchIcon) {
-      searchCard.classList.add('hidden');
+      searchCard.classList.add("hidden");
     }
   });
 });
 
-window.addEventListener('scroll', function() {
-  const navbar = document.getElementById('navbar') 
+window.addEventListener("scroll", function () {
+  const navbar = document.getElementById("navbar");
   if (window.scrollY > 42) {
-    navbar.classList.add('scrolled')
+    navbar.classList.add("scrolled");
   } else {
-    navbar.classList.remove('scrolled')  
+    navbar.classList.remove("scrolled");
   }
 });
 
-const dots = document.querySelectorAll('.dot');
-const cardsDiv = document.querySelector('.cards-div');
-const cards = document.querySelectorAll('.card');
+const dots = document.querySelectorAll(".dot");
+const cardsDiv = document.querySelector(".cards-div");
+const cards = document.querySelectorAll(".card");
 
 const cardWidth = 321;
 const gap = parseInt(getComputedStyle(cardsDiv).gap) || 0;
 const scrollAmount = cardWidth + gap;
 
 dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
+  dot.addEventListener("click", () => {
     const scrollPosition = index * scrollAmount;
 
     cardsDiv.scrollTo({
       left: scrollPosition,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
 
     updateActiveDot(index);
@@ -163,14 +167,14 @@ dots.forEach((dot, index) => {
 function updateActiveDot(activeIndex) {
   dots.forEach((dot, index) => {
     if (index === activeIndex) {
-      dot.classList.add('active');
+      dot.classList.add("active");
     } else {
-      dot.classList.remove('active');
+      dot.classList.remove("active");
     }
   });
 }
 
-cardsDiv.addEventListener('scroll', () => {
+cardsDiv.addEventListener("scroll", () => {
   const scrollLeft = cardsDiv.scrollLeft;
   const activeIndex = Math.round(scrollLeft / scrollAmount);
   updateActiveDot(activeIndex);
@@ -178,50 +182,52 @@ cardsDiv.addEventListener('scroll', () => {
 
 updateActiveDot(0);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const bagIcon = document.querySelector('.icons-container a[href="#"] img[alt="Bag"]');
-  const cartDiv = document.querySelector('.cart-div');
-  const emptyCartDiv = document.querySelector('.empty-cart');
-  const filledCartDiv = document.querySelector('.filled-cart');
-  const navbar = document.querySelector('.navbar');
+document.addEventListener("DOMContentLoaded", () => {
+  const bagIcon = document.querySelector(
+    '.icons-container a[href="#"] img[alt="Bag"]'
+  );
+  const cartDiv = document.querySelector(".cart-div");
+  const emptyCartDiv = document.querySelector(".empty-cart");
+  const filledCartDiv = document.querySelector(".filled-cart");
+  const navbar = document.querySelector(".navbar");
   const searchIcon = document.querySelector('.icons-container a[href="#"]');
   const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
   const collectionLink = document.querySelector('a[href="#collection"]');
 
   let cartItems = [
     {
-      name: 'Samantha Activewear',
-      imagePath: './images/cart-item1.png',
-      color: 'Gray',
-      size: 'S',
+      name: "Samantha Activewear",
+      imagePath: "./images/cart-item1.png",
+      color: "Gray",
+      size: "S",
       quantity: 1,
-      price: '79,00',
+      price: "79,00",
     },
     {
-      name: 'Shorte with back',
-      imagePath: './images/cart-item2.png',
-      color: 'Gray',
-      size: 'S',
+      name: "Shorte with back",
+      imagePath: "./images/cart-item2.png",
+      color: "Gray",
+      size: "S",
       quantity: 1,
-      price: '65,00',
+      price: "65,00",
     },
     {
-      name: 'Noya Slim Dress',
-      imagePath: './images/cart-item2.png',
-      color: 'Gray',
-      size: 'S',
+      name: "Noya Slim Dress",
+      imagePath: "./images/cart-item2.png",
+      color: "Gray",
+      size: "S",
       quantity: 1,
-      price: '65,00',
+      price: "65,00",
     },
   ];
 
   function renderScrollItems() {
-    const scrollDiv = document.querySelector('.items-scroll');
-    scrollDiv.innerHTML = '';
+    const scrollDiv = document.querySelector(".items-scroll");
+    scrollDiv.innerHTML = "";
 
     cartItems.forEach((item, index) => {
-      const scrollItemDiv = document.createElement('div');
-      scrollItemDiv.className = 'scroll-item';
+      const scrollItemDiv = document.createElement("div");
+      scrollItemDiv.className = "scroll-item";
 
       scrollItemDiv.innerHTML = `
         <span>
@@ -252,9 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function attachTrashListeners() {
-    const trashIcons = document.querySelectorAll('.trash-icon');
+    const trashIcons = document.querySelectorAll(".trash-icon");
     trashIcons.forEach((icon) => {
-      icon.addEventListener('click', (event) => {
+      icon.addEventListener("click", (event) => {
         event.stopPropagation(); // Prevent event from bubbling up
         const index = event.target.dataset.index;
         removeCartItem(index);
@@ -268,42 +274,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCart() {
-    document.querySelectorAll('.mega-dropdown, .collection-dropdown, .search-card').forEach(dropdown => {
-      dropdown.classList.remove('show');
-      dropdown.classList.add('hidden');
-    });
-    cartDiv.classList.add('visible');
+    document
+      .querySelectorAll(".mega-dropdown, .collection-dropdown, .search-card")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("show");
+        dropdown.classList.add("hidden");
+      });
+    cartDiv.classList.add("visible");
   }
 
   function hideCart() {
-    cartDiv.classList.remove('visible');
+    cartDiv.classList.remove("visible");
   }
 
-  bagIcon.addEventListener('mouseenter', showCart);
-  navbar.addEventListener('mouseleave', hideCart);
-  newArrivalsLink?.parentElement.addEventListener('mouseenter', hideCart);
-  collectionLink?.parentElement.addEventListener('mouseenter', hideCart);
-  searchIcon.addEventListener('mouseenter', hideCart);
+  bagIcon.addEventListener("mouseenter", showCart);
+  navbar.addEventListener("mouseleave", hideCart);
+  newArrivalsLink?.parentElement.addEventListener("mouseenter", hideCart);
+  collectionLink?.parentElement.addEventListener("mouseenter", hideCart);
+  searchIcon.addEventListener("mouseenter", hideCart);
 
-  document.addEventListener('click', (event) => {
-    if (!cartDiv.contains(event.target) && 
-        !bagIcon.contains(event.target) && 
-        !navbar.contains(event.target)) {
+  document.addEventListener("click", (event) => {
+    if (
+      !cartDiv.contains(event.target) &&
+      !bagIcon.contains(event.target) &&
+      !navbar.contains(event.target)
+    ) {
       hideCart();
     }
   });
 
-  document.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', hideCart);
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", hideCart);
   });
 
   function updateCartView() {
     if (cartItems.length === 0) {
-      emptyCartDiv.classList.remove('hidden');
-      filledCartDiv.classList.add('hidden');
+      emptyCartDiv.classList.remove("hidden");
+      filledCartDiv.classList.add("hidden");
     } else {
-      emptyCartDiv.classList.add('hidden');
-      filledCartDiv.classList.remove('hidden');
+      emptyCartDiv.classList.add("hidden");
+      filledCartDiv.classList.remove("hidden");
       renderScrollItems();
     }
   }
@@ -314,50 +324,47 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== COLLECTION MOREE =====================================================================
 
 // Add this JavaScript to make it work
-document.querySelectorAll('.accordion-header').forEach(button => {
-    button.addEventListener('click', () => {
-        const accordionItem = button.parentElement;
-        accordionItem.classList.toggle('active');
-    });
+document.querySelectorAll(".accordion-header").forEach((button) => {
+  button.addEventListener("click", () => {
+    const accordionItem = button.parentElement;
+    accordionItem.classList.toggle("active");
+  });
 });
-
 
 // ========== Best Seller =================================
 function toggleLike(imgElement) {
   // Check if the clicked element is an image
-  if (imgElement.tagName === 'IMG') {
-      // Toggle the image source based on the current src
-      if (imgElement.src.includes('empty-like.png')) {
-          imgElement.src = './icons/filled-like.png';  // Change to filled-like
-      } else {
-          imgElement.src = './icons/empty-like.png';   // Change to empty-like
-      }
+  if (imgElement.tagName === "IMG") {
+    // Toggle the image source based on the current src
+    if (imgElement.src.includes("empty-like.png")) {
+      imgElement.src = "./icons/filled-like.png"; // Change to filled-like
+    } else {
+      imgElement.src = "./icons/empty-like.png"; // Change to empty-like
+    }
   }
 }
 
-
 // ========== FAQ =================================
 
-document.addEventListener('DOMContentLoaded', function() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  
-  faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      
-      question.addEventListener('click', () => {
-          // Close other items
-          faqItems.forEach(otherItem => {
-              if (otherItem !== item && otherItem.classList.contains('active')) {
-                  otherItem.classList.remove('active');
-              }
-          });
-          
-          // Toggle current item
-          item.classList.toggle('active');
+document.addEventListener("DOMContentLoaded", function () {
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((item) => {
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", () => {
+      // Close other items
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains("active")) {
+          otherItem.classList.remove("active");
+        }
       });
+
+      // Toggle current item
+      item.classList.toggle("active");
+    });
   });
 });
-
 
 // =========== desktop content =============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -368,49 +375,59 @@ document.addEventListener("DOMContentLoaded", () => {
   const contentData = {
     2020: {
       title: "A Bold Beginning",
-      introText: "2020 was the year that marked the birth of our dream. Despite the challenges, we laid the foundation for a fashion brand driven by passion and creativity.",
+      introText:
+        "2020 was the year that marked the birth of our dream. Despite the challenges, we laid the foundation for a fashion brand driven by passion and creativity.",
       mainImage: "./images/2020-main.avif",
       mainImageTitle: "First Step",
       mainImageDate: "01/01/2020",
       sideImage: "./images/2020-side.avif",
-      closingText: "The year was all about starting small, dreaming big, and setting the tone for a journey that would redefine modern fashion."
+      closingText:
+        "The year was all about starting small, dreaming big, and setting the tone for a journey that would redefine modern fashion.",
     },
     2021: {
       title: "A Year of Growth",
-      introText: "2021 was a defining year for us. Our designs reached new audiences, and we embraced the challenge of growing our collection and expanding our vision.",
+      introText:
+        "2021 was a defining year for us. Our designs reached new audiences, and we embraced the challenge of growing our collection and expanding our vision.",
       mainImage: "./images/2021-main.avif",
       mainImageTitle: "Building",
       mainImageDate: "15/06/2021",
       sideImage: "./images/2021-side.avif",
-      closingText: "With every milestone we achieved, we gained the confidence to push boundaries and inspire creativity in all our endeavors."
+      closingText:
+        "With every milestone we achieved, we gained the confidence to push boundaries and inspire creativity in all our endeavors.",
     },
     2022: {
       title: "Opening Doors",
-      introText: "2022 was a monumental year as we officially opened our doors to the world. This marked the start of a deeper connection with our customers and the realization of a long-held dream.",
+      introText:
+        "2022 was a monumental year as we officially opened our doors to the world. This marked the start of a deeper connection with our customers and the realization of a long-held dream.",
       mainImage: "./images/2022-main.jpg",
       mainImageTitle: "Cadenza",
       mainImageDate: "05/03/2022",
       sideImage: "./images/2022-side.png",
-      closingText: "The grand opening was more than an event—it was the beginning of a community built on shared love for fashion and innovation."
+      closingText:
+        "The grand opening was more than an event—it was the beginning of a community built on shared love for fashion and innovation.",
     },
     2023: {
       title: "A Collaborative Breakthrough",
-      introText: "2023 brought our first collaboration, a milestone that blended unique visions and showcased the power of creative partnerships.",
+      introText:
+        "2023 brought our first collaboration, a milestone that blended unique visions and showcased the power of creative partnerships.",
       mainImage: "./images/2023-main.avif",
       mainImageTitle: "Creative",
       mainImageDate: "25/08/2023",
       sideImage: "./images/2023-side.avif",
-      closingText: "This collaboration was not just about creating fashion—it was about creating memories, strengthening bonds, and setting a new benchmark for the future."
+      closingText:
+        "This collaboration was not just about creating fashion—it was about creating memories, strengthening bonds, and setting a new benchmark for the future.",
     },
     2024: {
       title: "First collaboration",
-      introText: "On this momentous day, we celebrated our very first collaboration, marking a significant milestone in our journey. Partnering with Cadenza, we fused our distinct styles and visions to create something truly special. This collaboration not only broadened our creative horizons but also allowed us to connect with a wider community of fashion lovers.",
+      introText:
+        "On this momentous day, we celebrated our very first collaboration, marking a significant milestone in our journey. Partnering with Cadenza, we fused our distinct styles and visions to create something truly special. This collaboration not only broadened our creative horizons but also allowed us to connect with a wider community of fashion lovers.",
       mainImage: "./images/2024-main.png",
       mainImageTitle: "Collaboration",
       mainImageDate: "Rocan",
       sideImage: "./images/2024-side.png",
-      closingText: "The excitement in the air was palpable as we unveiled our joint collection, showcasing innovative designs that reflected our shared passion for fashion. This partnership opened new doors and set the stage for future collaborations, reinforcing our commitment to creativity and collaboration in the ever-evolving fashion landscape."
-    }
+      closingText:
+        "The excitement in the air was palpable as we unveiled our joint collection, showcasing innovative designs that reflected our shared passion for fashion. This partnership opened new doors and set the stage for future collaborations, reinforcing our commitment to creativity and collaboration in the ever-evolving fashion landscape.",
+    },
   };
 
   const yearElements = desktopContent.querySelectorAll(".year");
@@ -422,10 +439,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainImageDateElement = desktopContent.querySelector(".left h6");
   const sideImageElement = desktopContent.querySelector(".right img");
   const closingTextElement = desktopContent.querySelector(".right p");
-  const prevButton = desktopContent.querySelector('.arrow-btn[data-direction="prev"]');
-  const nextButton = desktopContent.querySelector('.arrow-btn[data-direction="next"]');
+  const prevButton = desktopContent.querySelector(
+    '.arrow-btn[data-direction="prev"]'
+  );
+  const nextButton = desktopContent.querySelector(
+    '.arrow-btn[data-direction="next"]'
+  );
 
-  let currentYearIndex = Array.from(yearElements).findIndex(el => el.classList.contains("active"));
+  let currentYearIndex = Array.from(yearElements).findIndex((el) =>
+    el.classList.contains("active")
+  );
 
   // Function to update the content with animations
   function updateContentWithAnimation(year) {
