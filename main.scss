@@ -1052,7 +1052,7 @@ body {
     margin-top: -42px;
     width: 100%;
     border-bottom: 1px solid #ccc;
-    z-index: 3;
+    z-index: 1001;
 
     ul li a,
     .icons-container a {
@@ -1068,8 +1068,10 @@ body {
     .logo {
       filter: invert(1);
     }
+
     @media (max-width: 768px) {
       margin-top: -32px;
+      width: 60%;
       .menu-icon {
         filter: invert(1);
       }
