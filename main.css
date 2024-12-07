@@ -524,8 +524,14 @@
   scroll-behavior: smooth;
 }
 
-body {
+html, body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
   max-width: 1705px;
 }
 
@@ -1484,7 +1490,6 @@ body {
 @media (max-width: 768px) {
   #header .scrolled {
     margin-top: -32px;
-    width: 60%;
   }
   #header .scrolled .menu-icon {
     filter: invert(1);
