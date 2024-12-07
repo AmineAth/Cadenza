@@ -6,17 +6,17 @@ class HeaderCarousel {
     // Slides as a class field
     slides = [
         {
-            image: '/images/header1.png',
+            image: '/images/header1.webp',
             title: 'BE THE FIRST',
             subtitle: 'Satisfy your top obsession with the range of new arrivals'
         },
         {
-            image: '/images/header2.png',
+            image: '/images/header2.webp',
             title: 'NEW COLLECTION',
             subtitle: 'Discover our latest arrivals for the season'
         },
         {
-            image: '/images/header3.jpg',
+            image: '/images/header3.webp',
             title: 'TRENDING NOW',
             subtitle: 'Shop the most wanted items of the week'
         }
