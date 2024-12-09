@@ -37,24 +37,375 @@
 
     <!-- ================== Navbar ============================================== -->
     <nav class="navbar" id="navbar">
-        <img src="../icons/menu.png" alt="Menu" class="menu-icon" id="menu-icon"> 
-        <ul class="menu-links" id="menu-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#new-arrivals">New Arrivals <span class="down-arrow"><img width="16px" src="../icons/down-arrow.png" alt=""></span></a></li>
-            <li><a href="#collection">Collection <span class="down-arrow"><img width="16px" src="../icons/down-arrow.png" alt=""></span></a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-        <div>
-            <img src="../icons/logo.png" alt="Logo" class="logo">
+      <img
+        src="../icons/menu.png"
+        alt="Menu"
+        class="menu-icon"
+        id="menu-icon"
+      />
+      <ul class="menu-links" id="menu-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li>
+          <a href="#new-arrivals"
+            >New Arrivals
+            <span class="down-arrow"
+              ><img width="16px" src="../icons/down-arrow.png" alt="" /></span
+          ></a>
+          <div class="mega-dropdown">
+            <div class="mega-dropdown-content">
+              <div class="left-navigation">
+                <a href="#">New Arrivals</a>
+                <a href="#">Top Sellings</a>
+                <a href="#">Trendigs Tops</a>
+                <a href="#">Latest Fashion</a>
+              </div>
+              <div class="content-columns">
+                <div class="menu-column">
+                  <h3>New Arrivals</h3>
+                  <ul>
+                    <li><a href="#">Samantha Activewear</a></li>
+                    <li><a href="#">Noya Slim Dress</a></li>
+                    <li><a href="#">Shorte with back</a></li>
+                    <li><a href="#">Jelna Split Dress</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h3>Top Sellings</h3>
+                  <ul>
+                    <li><a href="#">Black Co-ord set</a></li>
+                    <li><a href="#">Denim Jean</a></li>
+                    <li><a href="#">High rise shorts with top</a></li>
+                    <li><a href="#">Samantha Activewear</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h3>Trendigs Tops</h3>
+                  <ul>
+                    <li><a href="#">Jelna Split Dress</a></li>
+                    <li><a href="#">Noya Slim Dress</a></li>
+                    <li><a href="#">Samantha Activewear</a></li>
+                    <li><a href="#">Twilight Whisper Skirt</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h3>Latest Fashion</h3>
+                  <ul>
+                    <li><a href="#">Contact Information</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy / GDPR</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#collection"
+            >Collection
+            <span class="down-arrow"
+              ><img width="16px" src="../icons/down-arrow.png" alt="" /></span
+          ></a>
+          <div class="collection-dropdown">
+            <div class="collection-grid">
+              <div class="collection-item">
+                <img src="../images/topShop.png" alt="TopShop" />
+                <div class="collection-title">TopShop</div>
+              </div>
+              <div class="collection-item">
+                <img src="../images/lingerie.jpg" alt="Lingerie" />
+                <div class="collection-title">Lingerie</div>
+              </div>
+              <div class="collection-item">
+                <img src="../images/topShop2.png" alt="TopShop" />
+                <div class="collection-title">TopShop</div>
+              </div>
+              <div class="collection-item">
+                <img src="../images/bottom.jpg" alt="Bottom" />
+                <div class="collection-title">Bottom</div>
+              </div>
+              <div class="collection-item">
+                <img src="../images/activeWear.jpg" alt="Activewear" />
+                <div class="collection-title">Activewear</div>
+              </div>
+              <div class="collection-item">
+                <img src="../images/winter.jpg" alt="Winter" />
+                <div class="collection-title">Winter</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <div>
+        <img src="../icons/logo.png" alt="Logo" class="logo" />
+      </div>
+      <div class="icons-container">
+        <a href="#"><img src="../icons/search.png" alt="" /></a>
+        <a href="/pages/sign-up.html"><img src="../icons/user-account.png" alt="User" /></a>
+        <a href="#"> <img src="../icons/bag.png" alt="Bag" /></a>
+      </div>
+
+      <!-- Add the search card HTML here -->
+      <div class="search-card hidden">
+        <div class="search-input-container">
+          <input
+            type="text"
+            placeholder="What are you looking for ?"
+            class="search-input"
+          />
+          <button class="search-btn">
+            <img src="../icons/search.png" alt="Search" />
+          </button>
         </div>
-        <div class="icons-container">
-            <a href="#">Search</a>
-            <a href="#">Sign in</a>
-            <a href="#">Bag</a>
-            <img src="../icons/user-account.png" alt="User">
-            <img src="../icons/bag.png" alt="Bag">
+        <div class="search-suggestions">
+          <h3>Popular Categories</h3>
+          <ul class="suggestion-list">
+            <li><a href="#">Suit</a></li>
+            <li><a href="#">Activewear set</a></li>
+            <li><a href="#">Rompers</a></li>
+            <li><a href="#">Skirt</a></li>
+          </ul>
         </div>
+        <hr />
+        <div class="suggestions">
+          <div class="title-div">
+            <h3>Suggestions</h3>
+            <span>
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </span>
+          </div>
+          <div class="cards-div">
+            <div class="card">
+              <div class="img-div">
+                <img src="../images/product-img-1.png" alt="oops!" />
+              </div>
+              <div class="details-div">
+                <h3>Dumane Brace Dress</h3>
+                <p>S - M - L</p>
+                <p class="price">
+                  35.00$ <span class="fake-price">69.00$</span>
+                </p>
+                <a href="">view details</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img-div">
+                <img src="../images/product-img-2.png" alt="oops!" />
+              </div>
+              <div class="details-div">
+                <h3>Dumane Brace Dress</h3>
+                <p>S - M - L</p>
+                <p class="price">
+                  35.00$ <span class="fake-price">69.00$</span>
+                </p>
+                <a href="">view details</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img-div">
+                <img src="../images/product-img-3.png" alt="oops!" />
+              </div>
+              <div class="details-div">
+                <h3>Dumane Brace Dress</h3>
+                <p>S - M - L</p>
+                <p class="price">
+                  35.00$ <span class="fake-price">69.00$</span>
+                </p>
+                <a href="">view details</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img-div">
+                <img src="../images/product-img-4.png" alt="oops!" />
+              </div>
+              <div class="details-div">
+                <h3>Dumane Brace Dress</h3>
+                <p>S - M - L</p>
+                <p class="price">
+                  35.00$ <span class="fake-price">69.00$</span>
+                </p>
+                <a href="">view details</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img-div">
+                <img src="../images/product-img-2.png" alt="oops!" />
+              </div>
+              <div class="details-div">
+                <h3>Dumane Brace Dress</h3>
+                <p>S - M - L</p>
+                <p class="price">
+                  35.00$ <span class="fake-price">69.00$</span>
+                </p>
+                <a href="">view details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- navbar cart here  -->
+      <div class="cart-div">
+        <div class="empty-cart">
+          <h1>Your cart is empty</h1>
+          <p>
+            If you don't know where to start, try these amazing collections.
+          </p>
+          <div class="more-suggestions">
+            <span>
+              <img src="../images/p1.png" alt="oops" />
+              <aside>
+                <p>Activewear</p>
+                <img src="../icons/right-arrow.png" alt="" />
+              </aside>
+            </span>
+            <span>
+              <img src="../images/our-collection-1.png" alt="oops" />
+              <aside>
+                <p>Best Sellers</p>
+                <img src="../icons/right-arrow.png" alt="" />
+              </aside>
+            </span>
+            <span>
+              <img src="../images/p3.png" alt="oops" />
+              <aside>
+                <p>Dresses</p>
+                <img src="../icons/right-arrow.png" alt="" />
+              </aside>
+            </span>
+            <span>
+              <img src="../images/product-img-1.png" alt="oops" />
+              <aside>
+                <p>Lingerie</p>
+                <img src="../icons/right-arrow.png" alt="" />
+              </aside>
+            </span>
+            <span>
+              <img src="../images/p4.jpg" alt="oops" />
+              <aside>
+                <p>New Arrials</p>
+                <img src="../icons/right-arrow.png" alt="" />
+              </aside>
+            </span>
+          </div>
+        </div>
+        <div class="filled-cart">
+          <div class="cart-items">
+            <div class="items-scroll">
+              <!-- here my cart items inserted directly from js  -->
+            </div>
+
+            <div class="suggestions">
+              <div class="title-div">
+                <h3>You may also like</h3>
+                <span>
+                  <div class="dot active"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </span>
+              </div>
+              <div class="cards-div">
+                <div class="card">
+                  <div class="img-div">
+                    <img src="../images/product-img-1.png" alt="oops!" />
+                  </div>
+                  <div class="details-div">
+                    <h3>Dumane Brace Dress</h3>
+                    <p>S - M - L</p>
+                    <p class="price">
+                      35.00$ <span class="fake-price">69.00$</span>
+                    </p>
+                    <a href="">view details</a>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="img-div">
+                    <img src="../images/product-img-2.png" alt="oops!" />
+                  </div>
+                  <div class="details-div">
+                    <h3>Dumane Brace Dress</h3>
+                    <p>S - M - L</p>
+                    <p class="price">
+                      35.00$ <span class="fake-price">69.00$</span>
+                    </p>
+                    <a href="">view details</a>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="img-div">
+                    <img src="../images/product-img-3.png" alt="oops!" />
+                  </div>
+                  <div class="details-div">
+                    <h3>Dumane Brace Dress</h3>
+                    <p>S - M - L</p>
+                    <p class="price">
+                      35.00$ <span class="fake-price">69.00$</span>
+                    </p>
+                    <a href="">view details</a>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="img-div">
+                    <img src="../images/product-img-4.png" alt="oops!" />
+                  </div>
+                  <div class="details-div">
+                    <h3>Dumane Brace Dress</h3>
+                    <p>S - M - L</p>
+                    <p class="price">
+                      35.00$ <span class="fake-price">69.00$</span>
+                    </p>
+                    <a href="">view details</a>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="img-div">
+                    <img src="../images/product-img-2.png" alt="oops!" />
+                  </div>
+                  <div class="details-div">
+                    <h3>Dumane Brace Dress</h3>
+                    <p>S - M - L</p>
+                    <p class="price">
+                      35.00$ <span class="fake-price">69.00$</span>
+                    </p>
+                    <a href="">view details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <center><hr /></center>
+            <div class="checkout">
+              <div class="subtotal">
+                <h3>Subtotal</h3>
+                <h3>144,00$</h3>
+              </div>
+              <div class="total">
+                <h1>Total</h1>
+                <h1>144,00$</h1>
+              </div>
+              <span>
+                <button class="view-cart-button">View Cart</button>
+                <button class="checkout-button">Checkout 144,00$</button>
+              </span>
+              <p>Taxes, discounts and shipping calculated at checkout</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
     <!-- ================== hna the image and form ========================= -->
     <section class="main-container">

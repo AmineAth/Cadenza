@@ -64,315 +64,287 @@ autoSwipeNext();
 
 // ====================================== Navbar menu   ======================================================
 
-document.addEventListener('DOMContentLoaded', () => {
-  
-    // Collection data
-    const collections = [
-      {
-        title: 'TopShop',
-        image: '../images/topShop.png'
-      },
-      {
-        title: 'Lingerie',
-        image: '../images/lingerie.jpg'
-      },
-      {
-        title: 'TopShop',
-        image: '../images/topShop2.png'
-      },
-      {
-        title: 'Bottom',
-        image: '../images/bottom.jpg'
-      },
-      {
-        title: 'Activewear',
-        image: '../images/activeWear.jpg'
-      },
-      {
-        title: 'Winter',
-        image: '../images/winter.jpg'
-      }
-    ];
-  
-    // Mobile menu toggle
-    const menuIcon = document.getElementById('menu-icon');
-    const menuLinks = document.getElementById('menu-links');
-  
-    menuIcon?.addEventListener('click', () => {
-      menuLinks.classList.toggle('active');
-    });
-  
-    // Create mega dropdown for New Arrivals
-    const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
-    if (newArrivalsLink) {
-      const megaDropdown = document.createElement('div');
-      megaDropdown.className = 'mega-dropdown';
-      
-      const content = document.createElement('div');
-      content.className = 'dropdown-content';
-      
-      Object.entries(megaMenuContent).forEach(([columnTitle, links]) => {
-        const column = document.createElement('div');
-        column.className = 'column';
-        
-        const title = document.createElement('h3');
-        title.textContent = columnTitle;
-        column.appendChild(title);
-        
-        const ul = document.createElement('ul');
-        links.forEach(linkText => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = '#';
-          a.textContent = linkText;
-          li.appendChild(a);
-          ul.appendChild(li);
-        });
-        
-        column.appendChild(ul);
-        content.appendChild(column);
-      });
-      
-      megaDropdown.appendChild(content);
-      document.querySelector('.navbar').appendChild(megaDropdown);
-      
-      // Toggle mega dropdown on hover
-      newArrivalsLink.parentElement.addEventListener('mouseenter', () => {
-        hideAllDropdowns();
-        megaDropdown.classList.add('show');
-      });
-    }
-  
-    // Create collection dropdown
-    const collectionLink = document.querySelector('a[href="#collection"]');
-    if (collectionLink) {
-      const collectionDropdown = document.createElement('div');
-      collectionDropdown.className = 'collection-dropdown';
-      
-      const grid = document.createElement('div');
-      grid.className = 'collection-grid';
-      
-      collections.forEach(collection => {
-        const item = document.createElement('div');
-        item.className = 'collection-item';
-        
-        const img = document.createElement('img');
-        img.src = collection.image;
-        img.alt = collection.title;
-        
-        const title = document.createElement('div');
-        title.className = 'collection-title';
-        title.textContent = collection.title;
-        
-        item.appendChild(img);
-        item.appendChild(title);
-        grid.appendChild(item);
-        
-        item.addEventListener('click', () => {
-          window.location.href = `/collection/${collection.title.toLowerCase()}`;
-        });
-      });
-      
-      collectionDropdown.appendChild(grid);
-      document.querySelector('.navbar').appendChild(collectionDropdown);
-      
-      // Toggle collection dropdown on hover
-      collectionLink.parentElement.addEventListener('mouseenter', () => {
-        hideAllDropdowns();
-        collectionDropdown.classList.add('show');
-      });
-    }
-  
-    // Hide all dropdowns function
-    function hideAllDropdowns() {
-      document.querySelectorAll('.mega-dropdown, .collection-dropdown').forEach(dropdown => {
-        dropdown.classList.remove('show');
-      });
-    }
-  
-    // Handle mouse leave for navbar
-    document.querySelector('.navbar').addEventListener('mouseleave', hideAllDropdowns);
+document.addEventListener("DOMContentLoaded", () => {
+  const menuIcon = document.getElementById("menu-icon");
+  const menuLinks = document.getElementById("menu-links");
+
+  menuIcon?.addEventListener("click", () => {
+    menuLinks.classList.toggle("active");
   });
 
-
-
-
-  // fixing navbar after 42px scroll
-
-  window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar') 
-    if (window.scrollY > 42) {
-      navbar.classList.add('scrolled')
-    } else {
-      navbar.classList.remove('scrolled')  
-    }
-  });
-
-
-
-  // Define the navigation items with bold styling for left menu
-const navigationItems = [
-  { title: 'New Arrivals', isBold: true },
-  { title: 'Top Sellings', isBold: true },
-  { title: 'Trendigs Tops', isBold: true },
-  { title: 'Latest Fashion', isBold: true }
-];
-
-// Mega menu content for all sections
-const megaMenuContent = {
-  'New Arrivals': ['Samantha Activewear', 'Noya Slim Dress', 'Shorte with back', 'Jelna Split Dress'],
-  'Top Sellings': ['Black Co-ord set', 'Denim Jean', 'High rise shorts with top', 'Samantha Activewear'],
-  'Trendigs Tops': ['Jelna Split Dress', 'Noya Slim Dress', 'Samantha Activewear', 'Twilight Whisper Skirt'],
-  'Latest Fashion': ['Contact Information', 'Terms of Service', 'Privacy Policy / GDPR', 'Cookie Policy']
-};
-
-// Create mega dropdown menu
-function createMegaMenu() {
-  const navbar = document.querySelector('.navbar');
-  
-  // Create the main mega dropdown container
-  const megaDropdown = document.createElement('div');
-  megaDropdown.className = 'mega-dropdown';
-  
-  // Create the content wrapper
-  const content = document.createElement('div');
-  content.className = 'mega-dropdown-content';
-  
-  // Create left navigation column
-  const leftNav = document.createElement('div');
-  leftNav.className = 'left-navigation';
-  
-  navigationItems.forEach(item => {
-    const navItem = document.createElement('a');
-    navItem.href = '#';
-    navItem.textContent = item.title;
-    if (item.isBold) {
-      navItem.style.fontWeight = 'bold';
-    }
-    leftNav.appendChild(navItem);
-  });
-  
-  // Create content columns
-  const columnsContainer = document.createElement('div');
-  columnsContainer.className = 'content-columns';
-  
-  Object.entries(megaMenuContent).forEach(([columnTitle, links]) => {
-    const column = document.createElement('div');
-    column.className = 'menu-column';
-    
-    const title = document.createElement('h3');
-    title.textContent = columnTitle;
-    column.appendChild(title);
-    
-    const ul = document.createElement('ul');
-    links.forEach(linkText => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = '#';
-      a.textContent = linkText;
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
-    
-    column.appendChild(ul);
-    columnsContainer.appendChild(column);
-  });
-  
-  // Assemble the mega dropdown
-  content.appendChild(leftNav);
-  content.appendChild(columnsContainer);
-  megaDropdown.appendChild(content);
-  navbar.appendChild(megaDropdown);
-  
-  // Add corresponding CSS
-  const style = document.createElement('style');
-  style.textContent = `
-    .mega-dropdown {
-      display: none;
-      position: absolute;
-      width: 100%;
-      left: 0;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    
-    .mega-dropdown-content {
-      display: flex;
-      padding: 0 5%;
-      max-width:1400px
-      margin: 0 auto;
-    }
-    
-    .left-navigation {
-      width: 200px;
-      padding-right: 20px;
-    }
-    
-    .left-navigation a {
-      display: block;
-      padding: 10px 0;
-      font-size:20px;
-      color: #333;
-      text-decoration: none;
-    }
-    
-    .content-columns {
-      display: flex;
-      flex: 1;
-      padding-left: 20px;
-    }
-    
-    .menu-column {
-      flex: 1;
-      padding: 10px 15px;
-    }
-    
-    .menu-column h3 {
-      margin: 0 0 15px 0;
-      font-size: 20px;
-      color: #333;
-    }
-    
-    .menu-column ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .menu-column li {
-      margin-bottom: 10px;
-    }
-    
-    .menu-column a {
-      color: #666;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    
-    .menu-column a:hover {
-      color: #000;
-    }
-    
-    .show {
-      display: block;
-    }
-  `;
-  
-  document.head.appendChild(style);
-  
-  // Add event listeners
-  const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
-  if (newArrivalsLink) {
-    newArrivalsLink.parentElement.addEventListener('mouseenter', () => {
-      megaDropdown.classList.add('show');
-    });
-    
-    megaDropdown.addEventListener('mouseleave', () => {
-      megaDropdown.classList.remove('show');
-    });
+  function hideAllDropdowns() {
+    document
+      .querySelectorAll(".mega-dropdown, .collection-dropdown")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("show");
+      });
   }
+
+  const navbar = document.querySelector(".navbar");
+  navbar.addEventListener("mouseleave", hideAllDropdowns);
+
+  const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
+  const collectionLink = document.querySelector('a[href="#collection"]');
+
+  newArrivalsLink?.parentElement.addEventListener("mouseenter", () => {
+    hideAllDropdowns();
+    document.querySelector(".mega-dropdown").classList.add("show");
+  });
+
+  collectionLink?.parentElement.addEventListener("mouseenter", () => {
+    hideAllDropdowns();
+    document.querySelector(".collection-dropdown").classList.add("show");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchIcon = document.querySelector('.icons-container a[href="#"]');
+  const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
+  const collectionLink = document.querySelector('a[href="#collection"]');
+
+  const searchCard = document.querySelector(".search-card");
+
+  function hideSearchCard() {
+    searchCard.classList.add("hidden");
+  }
+
+  searchIcon.addEventListener("mouseenter", () => {
+    // Hide other dropdowns when search card opens
+    document
+      .querySelectorAll(".mega-dropdown, .collection-dropdown")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("show");
+      });
+    searchCard.classList.remove("hidden");
+  });
+
+  // Hide search card when other dropdowns open
+  newArrivalsLink?.parentElement.addEventListener("mouseenter", hideSearchCard);
+  collectionLink?.parentElement.addEventListener("mouseenter", hideSearchCard);
+
+  // Hide dropdowns only when leaving entire area
+  document.querySelector(".navbar").addEventListener("mouseleave", () => {
+    searchCard.classList.add("hidden");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!searchCard.contains(event.target) && event.target !== searchIcon) {
+      searchCard.classList.add("hidden");
+    }
+  });
+});
+
+// fix the navbar after 42 pixels
+window.addEventListener("scroll", function () {
+  const navbar = document.getElementById("navbar");
+  if (window.scrollY > 42) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+// Select all necessary elements
+const searchDots = document.querySelectorAll(".search-card .dot");
+const searchCardsDiv = document.querySelector(".search-card .cards-div");
+
+const cartDots = document.querySelectorAll(".filled-cart .dot");
+const cartCardsDiv = document.querySelector(".filled-cart .cards-div");
+
+// Define constants
+const cardWidth = 321;
+const gap = parseInt(getComputedStyle(searchCardsDiv).gap) || 0;
+const scrollAmount = cardWidth + gap;
+
+// Scroll function for a specific container
+function scrollCards(container, index) {
+  const scrollPosition = index * scrollAmount;
+
+  container.scrollTo({
+    left: scrollPosition,
+    behavior: "smooth",
+  });
 }
 
-// Initialize the mega menu
-document.addEventListener('DOMContentLoaded', createMegaMenu);
+// Update active dots for a specific set
+function updateActiveDots(dots, activeIndex) {
+  dots.forEach((dot, index) => {
+    if (index === activeIndex) {
+      dot.classList.add("active");
+    } else {
+      dot.classList.remove("active");
+    }
+  });
+}
+
+// Handle dot clicks for search
+searchDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    scrollCards(searchCardsDiv, index);
+    updateActiveDots(searchDots, index);
+  });
+});
+
+// Handle dot clicks for cart
+cartDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    scrollCards(cartCardsDiv, index);
+    updateActiveDots(cartDots, index);
+  });
+});
+
+// Handle scroll events for search
+searchCardsDiv.addEventListener("scroll", () => {
+  const activeIndex = Math.round(searchCardsDiv.scrollLeft / scrollAmount);
+  updateActiveDots(searchDots, activeIndex);
+});
+
+// Handle scroll events for cart
+cartCardsDiv.addEventListener("scroll", () => {
+  const activeIndex = Math.round(cartCardsDiv.scrollLeft / scrollAmount);
+  updateActiveDots(cartDots, activeIndex);
+});
+
+// Initialize active dots
+updateActiveDots(searchDots, 0);
+updateActiveDots(cartDots, 0);
+
+
+// navbar's bag
+document.addEventListener("DOMContentLoaded", () => {
+  const bagIcon = document.querySelector(
+    '.icons-container a[href="#"] img[alt="Bag"]'
+  );
+  const cartDiv = document.querySelector(".cart-div");
+  const emptyCartDiv = document.querySelector(".empty-cart");
+  const filledCartDiv = document.querySelector(".filled-cart");
+  const navbar = document.querySelector(".navbar");
+  const searchIcon = document.querySelector('.icons-container a[href="#"]');
+  const newArrivalsLink = document.querySelector('a[href="#new-arrivals"]');
+  const collectionLink = document.querySelector('a[href="#collection"]');
+
+  let cartItems = [
+    {
+      name: "Samantha Activewear",
+      imagePath: "../images/cart-item1.png",
+      color: "Gray",
+      size: "S",
+      quantity: 1,
+      price: "79,00",
+    },
+    {
+      name: "Shorte with back",
+      imagePath: "../images/cart-item2.png",
+      color: "Gray",
+      size: "S",
+      quantity: 1,
+      price: "65,00",
+    },
+    {
+      name: "Noya Slim Dress",
+      imagePath: "../images/cart-item2.png",
+      color: "Gray",
+      size: "S",
+      quantity: 1,
+      price: "65,00",
+    },
+  ];
+
+  function renderScrollItems() {
+    const scrollDiv = document.querySelector(".items-scroll");
+    scrollDiv.innerHTML = "";
+
+    cartItems.forEach((item, index) => {
+      const scrollItemDiv = document.createElement("div");
+      scrollItemDiv.className = "scroll-item";
+
+      scrollItemDiv.innerHTML = `
+        <span>
+          <img src="${item.imagePath}" alt="Product Image">
+          <aside>
+            <h1>${item.name}
+              <img 
+                src="../icons/trash.png" 
+                alt="Remove" 
+                class="trash-icon" 
+                data-index="${index}"
+              >
+            </h1>
+            <p>Color - ${item.color}</p>
+            <p>Size - ${item.size}</p>
+            <h3>
+              <span class="quantity-control">+</span>${item.quantity}<span class="quantity-control">-</span>
+              <span class="price">${item.price}$</span>
+            </h3>
+          </aside>
+        </span>
+      `;
+
+      scrollDiv.appendChild(scrollItemDiv);
+    });
+
+    attachTrashListeners();
+  }
+
+  function attachTrashListeners() {
+    const trashIcons = document.querySelectorAll(".trash-icon");
+    trashIcons.forEach((icon) => {
+      icon.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent event from bubbling up
+        const index = event.target.dataset.index;
+        removeCartItem(index);
+      });
+    });
+  }
+
+  function removeCartItem(index) {
+    cartItems.splice(index, 1);
+    updateCartView();
+  }
+
+  function showCart() {
+    document
+      .querySelectorAll(".mega-dropdown, .collection-dropdown, .search-card")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("show");
+        dropdown.classList.add("hidden");
+      });
+    cartDiv.classList.add("visible");
+  }
+
+  function hideCart() {
+    cartDiv.classList.remove("visible");
+  }
+
+  bagIcon.addEventListener("mouseenter", showCart);
+  navbar.addEventListener("mouseleave", hideCart);
+  newArrivalsLink?.parentElement.addEventListener("mouseenter", hideCart);
+  collectionLink?.parentElement.addEventListener("mouseenter", hideCart);
+  searchIcon.addEventListener("mouseenter", hideCart);
+
+  document.addEventListener("click", (event) => {
+    if (
+      !cartDiv.contains(event.target) &&
+      !bagIcon.contains(event.target) &&
+      !navbar.contains(event.target)
+    ) {
+      hideCart();
+    }
+  });
+
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", hideCart);
+  });
+
+  function updateCartView() {
+    if (cartItems.length === 0) {
+      emptyCartDiv.classList.remove("hidden");
+      filledCartDiv.classList.add("hidden");
+    } else {
+      emptyCartDiv.classList.add("hidden");
+      filledCartDiv.classList.remove("hidden");
+      renderScrollItems();
+    }
+  }
+
+  updateCartView();
+});

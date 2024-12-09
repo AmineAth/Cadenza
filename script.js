@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// fix the navbar after 42 pixels
 window.addEventListener("scroll", function () {
   const navbar = document.getElementById("navbar");
   if (window.scrollY > 42) {
@@ -142,29 +143,30 @@ window.addEventListener("scroll", function () {
     navbar.classList.remove("scrolled");
   }
 });
+// Select all necessary elements
+const searchDots = document.querySelectorAll(".search-card .dot");
+const searchCardsDiv = document.querySelector(".search-card .cards-div");
 
-const dots = document.querySelectorAll(".dot");
-const cardsDiv = document.querySelector(".cards-div");
-const cards = document.querySelectorAll(".card");
+const cartDots = document.querySelectorAll(".filled-cart .dot");
+const cartCardsDiv = document.querySelector(".filled-cart .cards-div");
 
+// Define constants
 const cardWidth = 321;
-const gap = parseInt(getComputedStyle(cardsDiv).gap) || 0;
+const gap = parseInt(getComputedStyle(searchCardsDiv).gap) || 0;
 const scrollAmount = cardWidth + gap;
 
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    const scrollPosition = index * scrollAmount;
+// Scroll function for a specific container
+function scrollCards(container, index) {
+  const scrollPosition = index * scrollAmount;
 
-    cardsDiv.scrollTo({
-      left: scrollPosition,
-      behavior: "smooth",
-    });
-
-    updateActiveDot(index);
+  container.scrollTo({
+    left: scrollPosition,
+    behavior: "smooth",
   });
-});
+}
 
-function updateActiveDot(activeIndex) {
+// Update active dots for a specific set
+function updateActiveDots(dots, activeIndex) {
   dots.forEach((dot, index) => {
     if (index === activeIndex) {
       dot.classList.add("active");
@@ -174,14 +176,40 @@ function updateActiveDot(activeIndex) {
   });
 }
 
-cardsDiv.addEventListener("scroll", () => {
-  const scrollLeft = cardsDiv.scrollLeft;
-  const activeIndex = Math.round(scrollLeft / scrollAmount);
-  updateActiveDot(activeIndex);
+// Handle dot clicks for search
+searchDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    scrollCards(searchCardsDiv, index);
+    updateActiveDots(searchDots, index);
+  });
 });
 
-updateActiveDot(0);
+// Handle dot clicks for cart
+cartDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    scrollCards(cartCardsDiv, index);
+    updateActiveDots(cartDots, index);
+  });
+});
 
+// Handle scroll events for search
+searchCardsDiv.addEventListener("scroll", () => {
+  const activeIndex = Math.round(searchCardsDiv.scrollLeft / scrollAmount);
+  updateActiveDots(searchDots, activeIndex);
+});
+
+// Handle scroll events for cart
+cartCardsDiv.addEventListener("scroll", () => {
+  const activeIndex = Math.round(cartCardsDiv.scrollLeft / scrollAmount);
+  updateActiveDots(cartDots, activeIndex);
+});
+
+// Initialize active dots
+updateActiveDots(searchDots, 0);
+updateActiveDots(cartDots, 0);
+
+
+// navbar's bag
 document.addEventListener("DOMContentLoaded", () => {
   const bagIcon = document.querySelector(
     '.icons-container a[href="#"] img[alt="Bag"]'

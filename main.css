@@ -1467,7 +1467,7 @@ body {
 #header .scrolled {
   background-color: white;
   position: fixed;
-  margin-top: -42px;
+  top: 0;
   width: 100%;
   border-bottom: 1px solid #ccc;
   z-index: 1001;
@@ -1488,9 +1488,6 @@ body {
   filter: invert(1);
 }
 @media (max-width: 768px) {
-  #header .scrolled {
-    margin-top: -32px;
-  }
   #header .scrolled .menu-icon {
     filter: invert(1);
   }

@@ -572,8 +572,6 @@ body {
           .details-div {
             display: flex;
             flex-direction: column;
-            h3 {
-            }
             p {
               font-size: 12px;
               font-weight: 400;
@@ -923,8 +921,6 @@ body {
               .details-div {
                 display: flex;
                 flex-direction: column;
-                h3 {
-                }
                 p {
                   font-size: 12px;
                   font-weight: 400;
@@ -1054,7 +1050,7 @@ body {
   .scrolled {
     background-color: white;
     position: fixed;
-    margin-top: -42px;
+    top:0;
     width: 100%;
     border-bottom: 1px solid #ccc;
     z-index: 1001;
@@ -1075,7 +1071,6 @@ body {
     }
 
     @media (max-width: 768px) {
-      margin-top: -32px;
       .menu-icon {
         filter: invert(1);
       }
