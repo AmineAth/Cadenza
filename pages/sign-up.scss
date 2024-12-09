@@ -198,14 +198,15 @@ body{
 //
 
 .navbar {
-  background-color: white;
+  background-color: white;  
+    .menu-icon {
+      filter: invert(1);
+    }
   &:hover {
     .logo {
       transition-duration: 0.7s;
     }
-    .menu-icon {
-      filter: invert(1);
-    }
+
     .menu-links {
       li {
         a {

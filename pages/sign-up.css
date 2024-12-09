@@ -398,11 +398,11 @@ body {
   background: transparent;
   border-bottom: 1px solid #eee;
 }
+.navbar .menu-icon {
+  filter: invert(1);
+}
 .navbar:hover .logo {
   transition-duration: 0.7s;
-}
-.navbar:hover .menu-icon {
-  filter: invert(1);
 }
 .navbar:hover .menu-links li a {
   color: #000;
