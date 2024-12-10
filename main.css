@@ -2154,7 +2154,11 @@ body {
   width: 30px;
   margin: 15px 0px;
 }
-.product-details .product-info .size-color-div .size img:hover {
+.product-details .product-info .size-color-div .size img {
+  background-color: white;
+  border-radius: 50%;
+}
+.product-details .product-info .size-color-div .size img.clicked {
   filter: invert(1);
 }
 .product-details .product-images {
@@ -3732,6 +3736,13 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 0 10px;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+}
 .gallery-section h6 {
   font-size: 16px;
   font-weight: 500;
@@ -3741,6 +3752,11 @@ body {
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
   color: #cb9274;
+}
+@media (max-width: 768px) {
+  .gallery-section h6 {
+    font-size: 12px;
+  }
 }
 .gallery-section h1 {
   font-family: Jost;
@@ -3753,6 +3769,11 @@ body {
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
 }
+@media (max-width: 768px) {
+  .gallery-section h1 {
+    font-size: 24px;
+  }
+}
 .gallery-section h3 {
   font-family: DM Sans;
   font-size: 18px;
@@ -3762,6 +3783,12 @@ body {
   text-underline-position: from-font;
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
+  color: rgba(37, 35, 36, 0.8);
+}
+@media (max-width: 768px) {
+  .gallery-section h3 {
+    font-size: 12px;
+  }
 }
 .gallery-section div {
   display: flex;
@@ -3772,12 +3799,23 @@ body {
   gap: 6px;
   padding: 0px 24px;
 }
+@media (max-width: 768px) {
+  .gallery-section div {
+    overflow-y: auto;
+    width: 120%;
+  }
+}
 .gallery-section div img {
   height: 100%;
   flex: 1;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 6px;
+}
+@media (max-width: 768px) {
+  .gallery-section div img {
+    min-width: 227px;
+  }
 }
 .gallery-section div aside {
   position: relative;
@@ -3799,6 +3837,6 @@ body {
   align-self: center;
   left: 32%;
   width: 156px;
-  height: 30px;
+  height: 40px;
   z-index: 2;
 }/*# sourceMappingURL=main.css.map */

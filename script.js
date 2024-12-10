@@ -359,7 +359,7 @@ document.querySelectorAll(".accordion-header").forEach((button) => {
   });
 });
 
-// ========== Best Seller =================================
+// ========== Best Seller =============================================================
 function toggleLike(imgElement) {
   // Check if the clicked element is an image
   if (imgElement.tagName === "IMG") {
@@ -371,8 +371,20 @@ function toggleLike(imgElement) {
     }
   }
 }
+// ======================== Product details =======================================
+let sizeImg = document.getElementsByClassName('size-img');
 
-// ========== FAQ =================================
+for (let i = 0; i < sizeImg.length; i++) {
+  sizeImg[i].addEventListener('click', function () {
+    // Remove 'clicked' class from all elements
+    for (let j = 0; j < sizeImg.length; j++) {
+      sizeImg[j].classList.remove('clicked');
+    }
+    // Add 'clicked' class to the current element
+    this.classList.add('clicked');
+  });
+}
+// ========== FAQ ============================================================
 
 document.addEventListener("DOMContentLoaded", function () {
   const faqItems = document.querySelectorAll(".faq-item");

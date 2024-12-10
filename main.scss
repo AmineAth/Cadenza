@@ -1791,9 +1791,13 @@ $container-max-width: 1200px;
         }
       }
       .size {
-        img:hover {
+        img{
+          background-color: white;
+          border-radius: 50%;
+        &.clicked {
           filter: invert(1);
-        }
+        } 
+      }
       }
     }
   }
@@ -3374,7 +3378,7 @@ $container-max-width: 1200px;
   }
 }
 
-// ========= gallery-section ======================
+// ========= gallery section ======================
 .gallery-section {
   height: 521px;
   padding: 100px 10px 80px 10px;
@@ -3382,6 +3386,11 @@ $container-max-width: 1200px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  @media (max-width:768px) {
+      padding: 0 10px;
+      margin-bottom: 40px;
+      justify-content: center;
+  }
   h6 {
     font-size: 16px;
     font-weight: 500;
@@ -3390,6 +3399,9 @@ $container-max-width: 1200px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #cb9274;
+    @media (max-width:768px) {
+    font-size: 12px;
+    }
   }
   h1 {
     font-family: Jost;
@@ -3400,6 +3412,9 @@ $container-max-width: 1200px;
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    @media (max-width:768px) {
+      font-size: 24px;
+    } 
   }
   h3 {
     font-family: DM Sans;
@@ -3409,6 +3424,10 @@ $container-max-width: 1200px;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    color: #252324CC;
+    @media (max-width:768px) {
+      font-size: 12px;
+    }
   }
   div {
     display: flex;
@@ -3418,11 +3437,18 @@ $container-max-width: 1200px;
     width: 100%;
     gap: 6px;
     padding: 0px 24px;
+    @media (max-width:768px) {
+      overflow-y: auto;
+      width: 120%;
+    }
     img {
       height: 100%;
       flex: 1;
       object-fit: cover;
       border-radius: 6px;
+      @media (max-width:768px) {
+        min-width: 227px;
+      }
     }
     aside {
       position: relative;
@@ -3442,7 +3468,7 @@ $container-max-width: 1200px;
         align-self: center;
         left: 32%;
         width: 156px;
-        height: 30px;
+        height: 40px;
         z-index: 2;
       }
     }
