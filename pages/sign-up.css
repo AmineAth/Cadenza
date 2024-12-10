@@ -232,6 +232,9 @@
 body {
   overflow-x: hidden;
 }
+body:has(.scrolled) .main-container {
+  margin-top: 78px;
+}
 
 .promo-header {
   display: flex;

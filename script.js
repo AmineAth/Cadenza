@@ -359,7 +359,7 @@ document.querySelectorAll(".accordion-header").forEach((button) => {
   });
 });
 
-// ========== Best Seller =============================================================
+// ========== Best Seller & Latest articles (here only function to toggle like in cards) =============================================================
 function toggleLike(imgElement) {
   // Check if the clicked element is an image
   if (imgElement.tagName === "IMG") {
@@ -384,6 +384,8 @@ for (let i = 0; i < sizeImg.length; i++) {
     this.classList.add('clicked');
   });
 }
+//============ Latest Articles ================================================
+
 // ========== FAQ ============================================================
 
 document.addEventListener("DOMContentLoaded", function () {
