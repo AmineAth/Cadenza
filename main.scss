@@ -196,6 +196,13 @@ body {
 //
 
 .navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 80px;
+  background: transparent;
+  border-bottom: 1px solid #eee;
   &:hover {
     background-color: white;
     .logo {
@@ -210,11 +217,7 @@ body {
         a {
           color: #000;
         }
-        .down-arrow {
-          img {
-            filter: none;
-          }
-        }
+
       }
     }
     .icons-container a {
@@ -227,13 +230,7 @@ body {
       filter: invert(1);
     }
   }
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 80px;
-  background: transparent;
-  border-bottom: 1px solid #eee;
+
   @media (max-width: 768px) {
     padding: 10px 10px;
   }
@@ -289,19 +286,16 @@ body {
         font-size: 0.95rem;
         display: flex;
         align-items: center;
-        .down-arrow img {
-          filter: invert(1);
+        transition-duration: 0.3s;
+        .down-arrow {
+          margin: 0px 10px;
         }
-
         &:hover {
           color: #cb9274;
           text-decoration: underline;
           .down-arrow {
             transform: rotate(180deg);
-            transition-duration: 0.6s;
-            img {
-              filter: none;
-            }
+            transition-duration: 0.3s;
           }
         }
       }
@@ -1080,7 +1074,9 @@ body {
         filter: invert(1);
       }
     }
-
+    .down-arrow{
+      margin: 0px 10px;
+    }
     .logo {
       filter: invert(1);
     }
@@ -1093,6 +1089,7 @@ body {
         color: #000;
       }
     }
+
   }
 }
 
@@ -1404,8 +1401,8 @@ body {
 // ======= BEST SELLER ============================================
 
 .best-seller {
-  height: 1310px;
   padding: 100px;
+  justify-content: center;
   @media (max-width: 968px) {
     padding: 10px;
     height: 670px;
@@ -1422,7 +1419,6 @@ body {
   }
   .products-div {
     width: 100%;
-    height: 900px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -2862,45 +2858,41 @@ body {
       position: relative;
       overflow: hidden;
       border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       @media (max-width: 768px) {
         height: 325px;
       }
 
       img {
+        position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 10px;
+        border-radius: 10px; 
         transition-duration: 0.6s;
+        z-index: 1;
       }
 
       h1 {
         font-family: "Jost";
-        position: absolute;
-        top: 42%;
-        left: 42%;
         color: white;
-        transition: top 0.3s ease-in-out;
+        transition-duration: 0.6s;
         font-size: 34px;
-        @media (max-width: 768px) {
-          top: 43%;
-          left: 28%;
-        }
+        z-index: 2;
+        margin-bottom: -20px;
       }
 
       p {
         font-family: "Jost";
-        position: absolute;
-        top: 47%;
-        left: 46.5%;
+        margin-bottom: -5px;
         color: white;
         opacity: 0;
-        transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transition-duration: 0.6s;
         font-size: 24px;
-        @media (max-width: 768px) {
-          top: 47%;
-          left: 40%;
-        }
+        z-index: 2;
       }
 
       &:hover {
@@ -2909,18 +2901,11 @@ body {
           transform: scale(1.2);
         }
         h1 {
-          top: 40%;
-          @media (max-width: 768px) {
-            top: 33%;
-          }
+            transform: translateY(-20px);
         }
-
         p {
-          top: 45%;
           opacity: 1;
-          @media (max-width: 768px) {
-            top: 45%;
-          }
+          transform: translateY(-5px);
         }
       }
     }
@@ -2942,34 +2927,37 @@ body {
         position: relative;
         overflow: hidden;
         border-radius: 10px;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         img {
+          position: absolute;
           width: 100%;
           height: 100%;
           object-fit: cover;
           border-radius: 10px;
           transition-duration: 0.6s;
+          z-index: 1;
         }
 
         h1 {
           font-family: "Jost";
-          position: absolute;
-          top: 40%;
-          left: 46%;
           color: white;
-          transition: top 0.3s ease-in-out;
+          transition-duration: 0.6s;
           font-size: 34px;
+          z-index: 2;
+          margin-bottom: -20px;
         }
 
         p {
           font-family: "Jost";
-          position: absolute;
-          top: 55%;
-          left: 46%;
           color: white;
           opacity: 0;
-          transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+          transition-duration: 0.6s;
+          margin-bottom: -5px;
           font-size: 24px;
+          z-index: 2;
         }
 
         &:hover {
@@ -2978,12 +2966,12 @@ body {
             transform: scale(1.2);
           }
           h1 {
-            top: 35%;
+            transform: translateY(-20px);
           }
 
           p {
-            top: 45%;
             opacity: 1;
+            transform: translateY(-5px);
           }
         }
       }
@@ -3000,34 +2988,38 @@ body {
           position: relative;
           overflow: hidden;
           border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
 
           img {
+            position: absolute;
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
             transition-duration: 0.6s;
+            z-index: 1;
           }
 
           h1 {
             font-family: "Jost";
-            position: absolute;
-            top: 40%;
-            left: 38%;
             color: white;
-            transition: top 0.3s ease-in-out;
+            transition-duration: 0.6s;
+            margin-bottom: -20px;
             font-size: 34px;
+            z-index: 2;
           }
 
           p {
             font-family: "Jost";
-            position: absolute;
-            top: 55%;
-            left: 43%;
             color: white;
             opacity: 0;
-            transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transition-duration: 0.6s;
+            margin-bottom: -5px;
             font-size: 24px;
+            z-index: 2;
           }
 
           &:hover {
@@ -3036,11 +3028,11 @@ body {
               transform: scale(1.2);
             }
             h1 {
-              top: 35%;
+              transform: translateY(-20px);
             }
 
             p {
-              top: 45%;
+              transform: translateY(-5px);
               opacity: 1;
             }
           }
@@ -3156,7 +3148,7 @@ body {
 
 // ============== DESKTOP CONTENT ==================================
 .desktop-content {
-  padding: 30px 100px;
+  padding: 30px 15%;
   margin: 200px 0px;
   display: flex;
   justify-content: space-between;

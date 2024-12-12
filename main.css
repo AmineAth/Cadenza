@@ -713,9 +713,6 @@ body {
 .navbar:hover .menu-links li a {
   color: #000;
 }
-.navbar:hover .menu-links li .down-arrow img {
-  filter: none;
-}
 .navbar:hover .icons-container a {
   color: #000;
 }
@@ -783,9 +780,10 @@ body {
   font-size: 0.95rem;
   display: flex;
   align-items: center;
+  transition-duration: 0.3s;
 }
-.navbar .menu-links li a .down-arrow img {
-  filter: invert(1);
+.navbar .menu-links li a .down-arrow {
+  margin: 0px 10px;
 }
 .navbar .menu-links li a:hover {
   color: #cb9274;
@@ -793,10 +791,7 @@ body {
 }
 .navbar .menu-links li a:hover .down-arrow {
   transform: rotate(180deg);
-  transition-duration: 0.6s;
-}
-.navbar .menu-links li a:hover .down-arrow img {
-  filter: none;
+  transition-duration: 0.3s;
 }
 .navbar .mega-dropdown {
   display: none;
@@ -1505,6 +1500,9 @@ body {
 #header .scrolled .icons-container a img {
   filter: invert(1);
 }
+#header .scrolled .down-arrow {
+  margin: 0px 10px;
+}
 #header .scrolled .logo {
   filter: invert(1);
 }
@@ -1818,8 +1816,8 @@ body {
 }
 
 .best-seller {
-  height: 1310px;
   padding: 100px;
+  justify-content: center;
 }
 @media (max-width: 968px) {
   .best-seller {
@@ -1839,7 +1837,6 @@ body {
 }
 .best-seller .products-div {
   width: 100%;
-  height: 900px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -3260,6 +3257,10 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 768px) {
   .accessories .container .left {
@@ -3267,64 +3268,42 @@ body {
   }
 }
 .accessories .container .left img {
+  position: absolute;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
   transition-duration: 0.6s;
+  z-index: 1;
 }
 .accessories .container .left h1 {
   font-family: "Jost";
-  position: absolute;
-  top: 42%;
-  left: 42%;
   color: white;
-  transition: top 0.3s ease-in-out;
+  transition-duration: 0.6s;
   font-size: 34px;
-}
-@media (max-width: 768px) {
-  .accessories .container .left h1 {
-    top: 43%;
-    left: 28%;
-  }
+  z-index: 2;
+  margin-bottom: -20px;
 }
 .accessories .container .left p {
   font-family: "Jost";
-  position: absolute;
-  top: 47%;
-  left: 46.5%;
+  margin-bottom: -5px;
   color: white;
   opacity: 0;
-  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition-duration: 0.6s;
   font-size: 24px;
-}
-@media (max-width: 768px) {
-  .accessories .container .left p {
-    top: 47%;
-    left: 40%;
-  }
+  z-index: 2;
 }
 .accessories .container .left:hover img {
   filter: brightness(0.7);
   transform: scale(1.2);
 }
 .accessories .container .left:hover h1 {
-  top: 40%;
-}
-@media (max-width: 768px) {
-  .accessories .container .left:hover h1 {
-    top: 33%;
-  }
+  transform: translateY(-20px);
 }
 .accessories .container .left:hover p {
-  top: 45%;
   opacity: 1;
-}
-@media (max-width: 768px) {
-  .accessories .container .left:hover p {
-    top: 45%;
-  }
+  transform: translateY(-5px);
 }
 .accessories .container .right {
   flex: 1;
@@ -3345,44 +3324,48 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .accessories .container .right .top img {
+  position: absolute;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
   transition-duration: 0.6s;
+  z-index: 1;
 }
 .accessories .container .right .top h1 {
   font-family: "Jost";
-  position: absolute;
-  top: 40%;
-  left: 46%;
   color: white;
-  transition: top 0.3s ease-in-out;
+  transition-duration: 0.6s;
   font-size: 34px;
+  z-index: 2;
+  margin-bottom: -20px;
 }
 .accessories .container .right .top p {
   font-family: "Jost";
-  position: absolute;
-  top: 55%;
-  left: 46%;
   color: white;
   opacity: 0;
-  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition-duration: 0.6s;
+  margin-bottom: -5px;
   font-size: 24px;
+  z-index: 2;
 }
 .accessories .container .right .top:hover img {
   filter: brightness(0.7);
   transform: scale(1.2);
 }
 .accessories .container .right .top:hover h1 {
-  top: 35%;
+  transform: translateY(-20px);
 }
 .accessories .container .right .top:hover p {
-  top: 45%;
   opacity: 1;
+  transform: translateY(-5px);
 }
 .accessories .container .right .bottom {
   flex: 1;
@@ -3396,43 +3379,47 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .accessories .container .right .bottom div img {
+  position: absolute;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 10px;
   transition-duration: 0.6s;
+  z-index: 1;
 }
 .accessories .container .right .bottom div h1 {
   font-family: "Jost";
-  position: absolute;
-  top: 40%;
-  left: 38%;
   color: white;
-  transition: top 0.3s ease-in-out;
+  transition-duration: 0.6s;
+  margin-bottom: -20px;
   font-size: 34px;
+  z-index: 2;
 }
 .accessories .container .right .bottom div p {
   font-family: "Jost";
-  position: absolute;
-  top: 55%;
-  left: 43%;
   color: white;
   opacity: 0;
-  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition-duration: 0.6s;
+  margin-bottom: -5px;
   font-size: 24px;
+  z-index: 2;
 }
 .accessories .container .right .bottom div:hover img {
   filter: brightness(0.7);
   transform: scale(1.2);
 }
 .accessories .container .right .bottom div:hover h1 {
-  top: 35%;
+  transform: translateY(-20px);
 }
 .accessories .container .right .bottom div:hover p {
-  top: 45%;
+  transform: translateY(-5px);
   opacity: 1;
 }
 
@@ -3536,7 +3523,7 @@ body {
 }
 
 .desktop-content {
-  padding: 30px 100px;
+  padding: 30px 15%;
   margin: 200px 0px;
   display: flex;
   justify-content: space-between;
