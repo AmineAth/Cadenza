@@ -19,7 +19,7 @@ html, body {
   box-sizing: border-box;
 }
 body {
-  max-width: 1705px;
+  max-width: 2565px;
 }
 
 // Promo Header ===================================================
@@ -1066,7 +1066,7 @@ body {
     position: fixed;
     top:0;
     width: 100%;
-    max-width: 1705px;
+    max-width: 2565px;
     border-bottom: 1px solid #ccc;
     z-index: 1001;
 
@@ -3053,7 +3053,6 @@ body {
 // ==================== FAQ =============================================
 
 .faq {
-  height: 995px;
   padding: 60px 20px;
   margin: 0 auto;
   background-color: #f5f4f2;
@@ -3061,7 +3060,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   @media (max-width: 768px) {
-    height: 850px;
     overflow: hidden;
   }
 
