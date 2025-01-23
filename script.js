@@ -411,148 +411,66 @@ document.addEventListener("DOMContentLoaded", function () {
 // =========== desktop content =============================
 document.addEventListener("DOMContentLoaded", () => {
   const desktopContent = document.querySelector(".desktop-content");
-
-  if (!desktopContent) return; // Ensure the parent container exists
-
-  const contentData = {
-    2020: {
-      title: "A Bold Beginning",
-      introText:
-        "2020 was the year that marked the birth of our dream. Despite the challenges, we laid the foundation for a fashion brand driven by passion and creativity.",
-      mainImage: "./images/2020-main.avif",
-      mainImageTitle: "First Step",
-      mainImageDate: "01/01/2020",
-      sideImage: "./images/2020-side.avif",
-      closingText:
-        "The year was all about starting small, dreaming big, and setting the tone for a journey that would redefine modern fashion.",
-    },
-    2021: {
-      title: "A Year of Growth",
-      introText:
-        "2021 was a defining year for us. Our designs reached new audiences, and we embraced the challenge of growing our collection and expanding our vision.",
-      mainImage: "./images/2021-main.avif",
-      mainImageTitle: "Building",
-      mainImageDate: "15/06/2021",
-      sideImage: "./images/2021-side.avif",
-      closingText:
-        "With every milestone we achieved, we gained the confidence to push boundaries and inspire creativity in all our endeavors.",
-    },
-    2022: {
-      title: "Opening Doors",
-      introText:
-        "2022 was a monumental year as we officially opened our doors to the world. This marked the start of a deeper connection with our customers and the realization of a long-held dream.",
-      mainImage: "./images/2022-main.jpg",
-      mainImageTitle: "Cadenza",
-      mainImageDate: "05/03/2022",
-      sideImage: "./images/2022-side.png",
-      closingText:
-        "The grand opening was more than an event—it was the beginning of a community built on shared love for fashion and innovation.",
-    },
-    2023: {
-      title: "A Collaborative Breakthrough",
-      introText:
-        "2023 brought our first collaboration, a milestone that blended unique visions and showcased the power of creative partnerships.",
-      mainImage: "./images/2023-main.avif",
-      mainImageTitle: "Creative",
-      mainImageDate: "25/08/2023",
-      sideImage: "./images/2023-side.avif",
-      closingText:
-        "This collaboration was not just about creating fashion—it was about creating memories, strengthening bonds, and setting a new benchmark for the future.",
-    },
-    2024: {
-      title: "First collaboration",
-      introText:
-        "On this momentous day, we celebrated our very first collaboration, marking a significant milestone in our journey. Partnering with Cadenza, we fused our distinct styles and visions to create something truly special. This collaboration not only broadened our creative horizons but also allowed us to connect with a wider community of fashion lovers.",
-      mainImage: "./images/2024-main.png",
-      mainImageTitle: "Collaboration",
-      mainImageDate: "Rocan",
-      sideImage: "./images/2024-side.png",
-      closingText:
-        "The excitement in the air was palpable as we unveiled our joint collection, showcasing innovative designs that reflected our shared passion for fashion. This partnership opened new doors and set the stage for future collaborations, reinforcing our commitment to creativity and collaboration in the ever-evolving fashion landscape.",
-    },
-  };
-
   const yearElements = desktopContent.querySelectorAll(".year");
   const imagesContent = desktopContent.querySelector(".images-content");
-  const titleElement = desktopContent.querySelector(".left h1");
-  const introTextElement = desktopContent.querySelector(".left p");
-  const mainImageElement = desktopContent.querySelector(".left img");
-  const mainImageTitleElement = desktopContent.querySelector(".left h3");
-  const mainImageDateElement = desktopContent.querySelector(".left h6");
-  const sideImageElement = desktopContent.querySelector(".right img");
-  const closingTextElement = desktopContent.querySelector(".right p");
-  const prevButton = desktopContent.querySelector(
-    '.arrow-btn[data-direction="prev"]'
-  );
-  const nextButton = desktopContent.querySelector(
-    '.arrow-btn[data-direction="next"]'
-  );
+  const timelineData = desktopContent.querySelector(".timeline-data");
+  const leftSection = desktopContent.querySelector(".left");
+  const rightSection = desktopContent.querySelector(".right");
+  const prevButton = desktopContent.querySelector('.arrow-btn[data-direction="prev"]');
+  const nextButton = desktopContent.querySelector('.arrow-btn[data-direction="next"]');
 
   let currentYearIndex = Array.from(yearElements).findIndex((el) =>
-    el.classList.contains("active")
+      el.classList.contains("active")
   );
 
-  // Function to update the content with animations
   function updateContentWithAnimation(year) {
-    // Add fade-out class
-    imagesContent.classList.add("fade-out");
+      imagesContent.classList.add("fade-out");
 
-    // Wait for the fade-out animation to complete
-    setTimeout(() => {
-      // Update the content
-      const data = contentData[year];
-      titleElement.textContent = data.title;
-      introTextElement.textContent = data.introText;
-      mainImageElement.src = data.mainImage;
-      mainImageTitleElement.textContent = data.mainImageTitle;
-      mainImageDateElement.textContent = data.mainImageDate;
-      sideImageElement.src = data.sideImage;
-      closingTextElement.textContent = data.closingText;
-
-      // Remove fade-out and add fade-in class
-      imagesContent.classList.remove("fade-out");
-      imagesContent.classList.add("fade-in");
-
-      // Remove fade-in class after the animation ends
       setTimeout(() => {
-        imagesContent.classList.remove("fade-in");
-      }, 500); // Match the CSS animation duration
-    }, 500); // Match the CSS animation duration
+          const yearData = timelineData.querySelector(`[data-year="${year}"]`);
+          
+          leftSection.querySelector("h1").textContent = yearData.querySelector("h1").textContent;
+          leftSection.querySelector("p").textContent = yearData.querySelector(".intro").textContent;
+          leftSection.querySelector("img").src = yearData.querySelector(".main-image").src;
+          leftSection.querySelector("h3").textContent = yearData.querySelector(".main-image-title").textContent;
+          leftSection.querySelector("h6").textContent = yearData.querySelector(".main-image-date").textContent;
+          
+          rightSection.querySelector("img").src = yearData.querySelector(".side-image").src;
+          rightSection.querySelector("p").textContent = yearData.querySelector(".closing").textContent;
+
+          imagesContent.classList.remove("fade-out");
+          imagesContent.classList.add("fade-in");
+
+          setTimeout(() => {
+              imagesContent.classList.remove("fade-in");
+          }, 500);
+      }, 500);
   }
 
-  // Function to change the active year
   function changeActiveYear(newIndex) {
-    yearElements[currentYearIndex]?.classList.remove("active");
-    yearElements[newIndex]?.classList.add("active");
-    currentYearIndex = newIndex;
+      yearElements[currentYearIndex]?.classList.remove("active");
+      yearElements[newIndex]?.classList.add("active");
+      currentYearIndex = newIndex;
 
-    const selectedYear = yearElements[newIndex].dataset.year;
-    updateContentWithAnimation(selectedYear);
+      const selectedYear = yearElements[newIndex].dataset.year;
+      updateContentWithAnimation(selectedYear);
   }
 
-  // Event listener for year clicks
   yearElements.forEach((yearElement, index) => {
-    yearElement.addEventListener("click", () => {
-      changeActiveYear(index);
-    });
+      yearElement.addEventListener("click", () => {
+          changeActiveYear(index);
+      });
   });
 
-  // Event listeners for navigation buttons
   prevButton.addEventListener("click", () => {
-    if (currentYearIndex > 0) {
-      changeActiveYear(currentYearIndex - 1);
-    }
+      if (currentYearIndex > 0) {
+          changeActiveYear(currentYearIndex - 1);
+      }
   });
 
   nextButton.addEventListener("click", () => {
-    if (currentYearIndex < yearElements.length - 1) {
-      changeActiveYear(currentYearIndex + 1);
-    }
+      if (currentYearIndex < yearElements.length - 1) {
+          changeActiveYear(currentYearIndex + 1);
+      }
   });
-
-  // Initialize the content with the active year
-  const initialYear = yearElements[currentYearIndex]?.dataset.year;
-  if (initialYear) {
-    updateContentWithAnimation(initialYear);
-  }
 });
