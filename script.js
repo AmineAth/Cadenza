@@ -410,67 +410,81 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // =========== desktop content =============================
 document.addEventListener("DOMContentLoaded", () => {
-  const desktopContent = document.querySelector(".desktop-content");
-  const yearElements = desktopContent.querySelectorAll(".year");
-  const imagesContent = desktopContent.querySelector(".images-content");
-  const timelineData = desktopContent.querySelector(".timeline-data");
-  const leftSection = desktopContent.querySelector(".left");
-  const rightSection = desktopContent.querySelector(".right");
-  const prevButton = desktopContent.querySelector('.arrow-btn[data-direction="prev"]');
-  const nextButton = desktopContent.querySelector('.arrow-btn[data-direction="next"]');
+  const desktopContent = document.querySelector(".desktop-content")
 
-  let currentYearIndex = Array.from(yearElements).findIndex((el) =>
-      el.classList.contains("active")
-  );
+  if (!desktopContent) return // Ensure the parent container exists
 
-  function updateContentWithAnimation(year) {
-      imagesContent.classList.add("fade-out");
+  const yearElements = desktopContent.querySelectorAll(".year")
+  const yearContents = desktopContent.querySelectorAll(".year-content")
+  const prevButton = desktopContent.querySelector('.arrow-btn[data-direction="prev"]')
+  const nextButton = desktopContent.querySelector('.arrow-btn[data-direction="next"]')
 
+  let currentYearIndex = Array.from(yearElements).findIndex((el) => el.classList.contains("active"))
+
+  // Function to update the content with animations
+  function updateContentWithAnimation(newIndex) {
+    // Fade out all year contents
+    yearContents.forEach((content) => {
+      content.style.opacity = "0"
+      content.style.transition = "opacity 0.5s ease-out"
+    })
+
+    // Wait for the fade-out animation to complete
+    setTimeout(() => {
+      // Hide all year contents
+      yearContents.forEach((content) => {
+        content.style.display = "none"
+      })
+
+      // Show the selected year content
+      yearContents[newIndex].style.display = "flex"
+
+      // Fade in the selected year content
       setTimeout(() => {
-          const yearData = timelineData.querySelector(`[data-year="${year}"]`);
-          
-          leftSection.querySelector("h1").textContent = yearData.querySelector("h1").textContent;
-          leftSection.querySelector("p").textContent = yearData.querySelector(".intro").textContent;
-          leftSection.querySelector("img").src = yearData.querySelector(".main-image").src;
-          leftSection.querySelector("h3").textContent = yearData.querySelector(".main-image-title").textContent;
-          leftSection.querySelector("h6").textContent = yearData.querySelector(".main-image-date").textContent;
-          
-          rightSection.querySelector("img").src = yearData.querySelector(".side-image").src;
-          rightSection.querySelector("p").textContent = yearData.querySelector(".closing").textContent;
-
-          imagesContent.classList.remove("fade-out");
-          imagesContent.classList.add("fade-in");
-
-          setTimeout(() => {
-              imagesContent.classList.remove("fade-in");
-          }, 500);
-      }, 500);
+        yearContents[newIndex].style.opacity = "1"
+        yearContents[newIndex].style.transition = "opacity 0.5s ease-in"
+      }, 50)
+    }, 500) // Match the fade-out duration
   }
 
+  // Function to change the active year
   function changeActiveYear(newIndex) {
-      yearElements[currentYearIndex]?.classList.remove("active");
-      yearElements[newIndex]?.classList.add("active");
-      currentYearIndex = newIndex;
+    yearElements[currentYearIndex].classList.remove("active")
+    yearElements[newIndex].classList.add("active")
+    currentYearIndex = newIndex
 
-      const selectedYear = yearElements[newIndex].dataset.year;
-      updateContentWithAnimation(selectedYear);
+    updateContentWithAnimation(newIndex)
   }
 
+  // Event listener for year clicks
   yearElements.forEach((yearElement, index) => {
-      yearElement.addEventListener("click", () => {
-          changeActiveYear(index);
-      });
-  });
+    yearElement.addEventListener("click", () => {
+      changeActiveYear(index)
+    })
+  })
 
+  // Event listeners for navigation buttons
   prevButton.addEventListener("click", () => {
-      if (currentYearIndex > 0) {
-          changeActiveYear(currentYearIndex - 1);
-      }
-  });
+    if (currentYearIndex > 0) {
+      changeActiveYear(currentYearIndex - 1)
+    }
+  })
 
   nextButton.addEventListener("click", () => {
-      if (currentYearIndex < yearElements.length - 1) {
-          changeActiveYear(currentYearIndex + 1);
-      }
-  });
-});
+    if (currentYearIndex < yearElements.length - 1) {
+      changeActiveYear(currentYearIndex + 1)
+    }
+  })
+
+  // Initialize the content
+  yearContents.forEach((content, index) => {
+    if (index === currentYearIndex) {
+      content.style.display = "flex"
+      content.style.opacity = "1"
+    } else {
+      content.style.display = "none"
+      content.style.opacity = "0"
+    }
+  })
+})
+
